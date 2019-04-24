@@ -8,7 +8,7 @@ var questions = [{
 },
 {
     question: "According to Prison Mike, what is the worst thing about prison?",
-    choices: ["Figting", "Drugs", "Orcs", "Dementors"],
+    choices: ["Fighting", "Drugs", "Orcs", "Dementors"],
     answer: "Dementors"
 },
 {
@@ -78,18 +78,24 @@ function beginGame(index) {
     $(".choices").empty();
 
     if (index < questions.length) {
-        
+
         timeLeft = 15;
         counter = setInterval(timer, 1000)
-    
+
         $(".question").html("<p>" + questions[index].question + "</p>");
-    
+
         for (i = 0; i < questions[index].choices.length; i++) {
-            $(".choices").append(`<button type='button' class='btn btn-primary choicebtn' value=${questions[index].choices[i]}>  ${questions[index].choices[i]}  </button>`);
+            $(".choices").append(`<button type='button' class='btn btn-dark choicebtn' value=${questions[index].choices[i]}>  ${questions[index].choices[i]}  </button>`);
         }
     } else {
 
-        //end of game screen
+        $(".qright").html(`<p> Correct Answers: ${correct} </p>`);
+        $(".qwrong").html(`<p> Incorrect Answers: ${incorrect} </p>`);
+        $(".qunanswered").html(`<p> Unanswered Answers: ${unanswerred} </p>`)
+        $(".question").hide(); 
+        $(".timer").hide(); 
+        restart();
+
     }
 
 
@@ -118,3 +124,29 @@ $(document).on("click", ".choicebtn", function () {
     clearInterval(counter);
 });
 
+
+function restart() {
+
+    $(".startbutton").show();
+
+    $(".startbutton").on("click", function () {
+
+
+        correct = 0;
+        incorrect = 0;
+        unanswerred = 0;
+        questionIndex = 0;
+        clearInterval(counter);
+        $(".question").show(); 
+        $(".timer").show(); 
+        $(".qright").remove(); 
+        $(".qwrong").remove();
+        $(".qunanswered").remove();
+        $(this).hide();
+
+        beginGame(questionIndex);
+        
+
+    }); 
+
+}; 
