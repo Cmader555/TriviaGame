@@ -42,21 +42,16 @@ var counter;
 questionIndex = 0;
 
 
-function start() {
 
 
-    $(".startbutton").on("click", function () {
 
-        $(this).hide();
+$(".startbutton").on("click", function () {
 
+    $(this).hide();
+    beginGame(questionIndex);
 
-        beginGame(questionIndex);
+})
 
-    })
-
-}
-
-start();
 
 function timer() {
 
@@ -87,20 +82,20 @@ function beginGame(index) {
         for (i = 0; i < questions[index].choices.length; i++) {
             $(".choices").append(`<button type='button' class='btn btn-dark choicebtn' value=${questions[index].choices[i]}>  ${questions[index].choices[i]}  </button>`);
         }
-    } else {
+    }
+    else {
 
+        $(".qright").show();
+        $(".qwrong").show();
+        $(".qunanswered").show();
         $(".qright").html(`<p> Correct Answers: ${correct} </p>`);
         $(".qwrong").html(`<p> Incorrect Answers: ${incorrect} </p>`);
         $(".qunanswered").html(`<p> Unanswered Answers: ${unanswerred} </p>`)
-        $(".question").hide(); 
-        $(".timer").hide(); 
+        $(".question").hide();
+        $(".timer").hide();
         restart();
 
     }
-
-
-
-
 };
 
 $(document).on("click", ".choicebtn", function () {
@@ -112,11 +107,13 @@ $(document).on("click", ".choicebtn", function () {
         correct++;
 
     } else {
-        $(".answer").html(`<p> You guessed the wrong Answer! The correct answer was ${questions[questionIndex].answer} </p>`);
+        $(".answer").html(`<p> You guessed the wrong Answer! Try again next time! </p>`);
         incorrect++;
 
 
     }
+
+
 
     questionIndex++;
 
@@ -136,17 +133,18 @@ function restart() {
         incorrect = 0;
         unanswerred = 0;
         questionIndex = 0;
+        i = 0;
         clearInterval(counter);
-        $(".question").show(); 
-        $(".timer").show(); 
-        $(".qright").remove(); 
-        $(".qwrong").remove();
-        $(".qunanswered").remove();
+        $(".question").show();
+        $(".timer").show();
+        $(".qright").hide();
+        $(".qwrong").hide();
+        $(".qunanswered").hide();
         $(this).hide();
 
         beginGame(questionIndex);
-        
 
-    }); 
+
+    });
 
 }; 
