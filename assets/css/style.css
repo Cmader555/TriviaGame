@@ -1,0 +1,19 @@
+body {
+    background: url(../images/scott-background.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+}
+
+.container {
+    position: fixed; 
+    margin-left: 0; 
+    padding-left: 0; 
+}
+
+
+.btn {
+    margin: 1rem; 
+}

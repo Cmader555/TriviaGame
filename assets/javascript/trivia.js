@@ -59,13 +59,21 @@ function timer() {
         clearInterval(counter);
         //console.log("timer has stopped")
 
+
     } else {
         timeLeft--;
         //console.log("Seconds Remaining:" + timeLeft);
         $(".timer").html("<p>Seconds Remaining: <p>" + timeLeft);
     };
+    if (timeLeft === 0) {
+        $(".answer").html(`<p> You did not select an answer before time ran out!</p>`);
+        unanswerred++;
+       questionIndex++
+        setTimeout(function () { beginGame(questionIndex) }, 3000);
+        clearInterval(counter);
+    }
 
-}
+};
 
 function beginGame(index) {
 
@@ -82,8 +90,7 @@ function beginGame(index) {
         for (i = 0; i < questions[index].choices.length; i++) {
             $(".choices").append(`<button type='button' class='btn btn-dark choicebtn' value=${questions[index].choices[i]}>  ${questions[index].choices[i]}  </button>`);
         }
-    }
-    else {
+    } else {
 
         $(".qright").show();
         $(".qwrong").show();
@@ -96,6 +103,7 @@ function beginGame(index) {
         restart();
 
     }
+    
 };
 
 $(document).on("click", ".choicebtn", function () {
@@ -113,6 +121,7 @@ $(document).on("click", ".choicebtn", function () {
 
     }
 
+    console.log(timeLeft);
 
 
     questionIndex++;
