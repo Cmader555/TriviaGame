@@ -37,7 +37,7 @@ var questions = [{
 var correct = 0;
 var incorrect = 0;
 var unanswerred = 0;
-var timeLeft = 15;
+var timeLeft = 16;
 var counter;
 questionIndex = 0;
 
@@ -82,7 +82,7 @@ function beginGame(index) {
 
     if (index < questions.length) {
 
-        timeLeft = 15;
+        timeLeft = 16;
         counter = setInterval(timer, 1000)
 
         $(".question").html("<p>" + questions[index].question + "</p>");

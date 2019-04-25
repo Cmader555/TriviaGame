@@ -4,13 +4,19 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    font-family: 'Exo 2', sans-serif;
     
 }
 
 .container {
-    position: fixed; 
-    margin-left: 0; 
-    padding-left: 0; 
+    background-color: rgb(255, 255, 255, .5);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+    align-items: center;
+    max-width: 750px;
+    min-height: 300px;
 }
 
 
