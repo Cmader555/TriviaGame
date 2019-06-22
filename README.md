@@ -1,14 +1,14 @@
-### Homer Simpson Letter Guessing Game
+### The Office Themed Trivia Game
 
-* This is a trivia game created to showcase javascript, Jquery, and javascript timing events. 
+* This is a trivia game created to showcase my javascript, Jquery, and javascript timing events skills
   
-* You have 5 chances to guess the correct random letter by clicking on a key on your keyboard
+* You have 15 seconds to attempt to correctly answer each trivia question 
 
-* If you guess the correct letter, or you run out of guesses the game informs you if you have won, or lost and the game resets
+* The game continues to the next question once 15 seconds have expired, or you have attempted to answer the question 
 
-* Open the console if you want to see the letter you are guessing
+* At the end of the game, your score totals are displayed and you can restart the game if you choose
 
-* Game Link: https://cmader555.github.io/Letter-Guess-Game/
+* Game Link: https://cmader555.github.io/TriviaGame/
 
 ## Installation 
 
@@ -16,5 +16,5 @@
 
 ## Preview 
 
-![Basic Portfolio](assets/images/simpsonLetterGame.png)
+![Basic Portfolio](assets/images/officeTrivia.png)
 

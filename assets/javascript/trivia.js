@@ -1,4 +1,4 @@
-//question variables with question, answer choices, and correct choices
+//question array of objects with question, answer choices, and correct choices
 
 var questions = [{
     question: "Who does Michael Scott accidentally hit with his car in the parking lot? ",
@@ -33,7 +33,7 @@ var questions = [{
     answer: "Justice-Beaver"
 }];
 
-//addtional variables needed for game to run properly 
+//additional variables needed for game to run properly 
 var correct = 0;
 var incorrect = 0;
 var unanswerred = 0;
@@ -44,7 +44,7 @@ questionIndex = 0;
 
 
 
-//intial start button to begin game via the function as well as hiding start button
+//initial start button to begin game via the function as well as hiding start button
 $(".startbutton").on("click", function () {
 
     $(this).hide();
@@ -78,7 +78,7 @@ function timer() {
 };
 
 
-//allows game to procede 
+//allows game to proceed 
 function game(index) {
     //empties answer and choices display in case something is already there
     $(".answer").empty();
@@ -88,14 +88,14 @@ function game(index) {
         // if index is smaller then question length timer begins
         timeLeft = 16;
         counter = setInterval(timer, 1000)
-        //dispalys question at current index
+        //displays question at current index
         $(".question").html("<p>" + questions[index].question + "</p>");
-        // at current question index, for each choice index a button is created ad appened to the last, and a value of said choice index is added to each button as they are "created"
+        // at current question index, for each choice index a button is created ad append to the last, and a value of said choice index is added to each button as they are "created"
         for (i = 0; i < questions[index].choices.length; i++) {
             $(".choices").append(`<button type='button' class='btn btn-dark choicebtn' value=${questions[index].choices[i]}>  ${questions[index].choices[i]}  </button>`);
         }
     } else {
-        // if index becomes larger then questions.length finall correct/inccorrect/unanswerred amount shows and restart function is invoked
+        // if index becomes larger then questions.length finally correct/incorrect/unanswerred amount shows and restart function is invoked
         $(".qright").show();
         $(".qwrong").show();
         $(".qunanswered").show();
@@ -114,11 +114,11 @@ $(document).on("click", ".choicebtn", function () {
     // answerGuessed set to value of button clicked
     var answerGuessed = $(this).attr("value")
     //console.log("Answer is" + answerGuessed)
-    // if value of button clicked is equal to answewr at current index, correct count is increased and correct HTML displayed
+    // if value of button clicked is equal to answer at current index, correct count is increased and correct HTML displayed
     if (answerGuessed === questions[questionIndex].answer) {
         $(".answer").html(`<p> You got the correct Answer! </p>`);
         correct++;
-        //if correct answer not selected.. IE they do not equal, then icorrect value increases and incorrect message is displayed on DOM
+        //if correct answer not selected.. IE they do not equal, then incorrect value increases and incorrect message is displayed on DOM
     } else {
         $(".answer").html(`<p> You guessed the wrong Answer! Try again next time! </p>`);
         incorrect++;
